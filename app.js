@@ -11,7 +11,6 @@ const repartidoresRouter = require("./routes/repartidores");
 const pedidosRouter = require("./routes/orders");
 require("dotenv").config();
 var app = express();
-console.log(process.env.DBPASSWORD);
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "jade");
