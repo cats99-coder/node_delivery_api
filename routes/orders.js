@@ -5,7 +5,7 @@ var router = express.Router();
 
 router.get("/:id", async function (req, res, next) {
   const { id } = req.params;
-  await db.conexion.query(
+  db.conexion.query(
     "select * from orders where order_id=? LIMIT 1",
     [id],
     (err, data) => {
@@ -52,7 +52,6 @@ router.post("/", async function (req, res, next) {
             if (a.d >= b.d) return 1;
             return -1;
           });
-
         res.send(ridersDisponibles);
         res.end();
       }
