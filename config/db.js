@@ -1,11 +1,11 @@
 const mysql = require("mysql");
-
 //The MySQL administrator (root) has no password.
+require('dotenv').config()
 const conexion = mysql.createConnection({
-  host: "localhost",
-  user: "root",
-  password: "",
-  database: "node_delivery_api",
+  host: process.env.DBHOST,
+  user: process.env.DBUSER,
+  password: process.env.DBPASSWORD,
+  database: process.env.DBDATABASE,
 });
 
 const db = () => {
@@ -18,4 +18,4 @@ const db = () => {
   });
 };
 
-module.exports = {db, conexion};
+module.exports = { db, conexion };
