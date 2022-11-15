@@ -52,7 +52,21 @@ router.post("/", async function (req, res, next) {
             if (a.d >= b.d) return 1;
             return -1;
           });
-        res.send(ridersDisponibles);
+        const D = distancia(
+          {
+            longitud: restaurante[0].rest_long,
+            latitud: restaurante[0].rest_lat,
+          },
+          {
+            longitud: user_long,
+            latitud: user_lat,
+          }
+        );
+        const result = ridersDisponibles.map((rider) => {
+          rider.d += D;
+          return rider;
+        });
+        res.send(result);
         res.end();
       }
     );
